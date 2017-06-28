@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor buyer
+actor seller
+actor moderator
+
+buyer -- (web-app)
+seller -- (web-app)
+moderator -- (moderator-app)
+rectangle system {
+    (web-app) -down-> (api-ads)
+    (moderator-app) -down-> (api-ads)
+    rectangle web-app {
+    }
+
+    rectangle api-ads {
+    }
+
+    rectangle moderator-app {
+    }
+}
+@enduml
