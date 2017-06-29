@@ -1,0 +1,11 @@
+@startuml
+top to bottom direction
+usecase UC2 as "
+    As a User of the system 
+    I need to login to the system
+    in order to perform restricted
+    actions like as publish a new Ad.
+"
+actor User
+User --> (login)
+@enduml
