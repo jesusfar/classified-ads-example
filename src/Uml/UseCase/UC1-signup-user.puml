@@ -2,7 +2,7 @@
 top to bottom direction
 usecase UC1 as "
     As a new User, I need to sign up
-    in the system in order to login in it.
+    in the system in order to login.
 "
 actor User
 User --> (signup)

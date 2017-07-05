@@ -16,6 +16,7 @@ seller -- (web-app)
 moderator -- (moderator-app)
 rectangle system {
     (web-app) -down-> (ads-service)
+    (web-app) -down-> (user-service)
     (moderator-app) -down-> (ads-service)
     rectangle web-app {
     }
@@ -24,6 +25,9 @@ rectangle system {
     }
 
     rectangle moderator-app {
+    }
+
+    rectangle user-service {
     }
 }
 @enduml
