@@ -1,8 +1,8 @@
 @startuml
 top to bottom direction
 usecase UC3 as "
-    As a Buyer User, I can post a new Ad.
+    As a Seller User, I can post a new Ad.
 "
-actor Buyer
-Buyer --> (post Ad)
+actor Seller
+Seller --> (Post new Ad)
 @enduml
