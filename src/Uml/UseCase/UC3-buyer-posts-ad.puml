@@ -1,0 +1,8 @@
+@startuml
+top to bottom direction
+usecase UC3 as "
+    As a Buyer User, I can post a new Ad.
+"
+actor Buyer
+Buyer --> (post Ad)
+@enduml
