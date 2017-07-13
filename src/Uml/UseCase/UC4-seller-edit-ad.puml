@@ -1,0 +1,8 @@
+@startuml
+top to bottom direction
+usecase UC4 as "
+    As a Seller User, I can edit an Ad.
+"
+actor Seller
+Seller --> (Edit Ad)
+@enduml
