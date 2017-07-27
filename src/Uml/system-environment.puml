@@ -11,14 +11,20 @@ user <|-- buyer
 user <|-- seller
 user <|-- moderator
 
-buyer -- (web-app)
-seller -- (web-app)
+buyer -- (public-web-app)
+seller -- (public-web-app)
 moderator -- (moderator-app)
 rectangle system {
-    (web-app) -down-> (ads-service)
-    (web-app) -down-> (user-service)
+    (public-web-app) -down-> (public-api)
+    (public-api) -down-> (user-service)
+    (public-api) -down-> (ads-service)
     (moderator-app) -down-> (ads-service)
-    rectangle web-app {
+    
+    rectangle public-api {
+    
+    }
+    
+    rectangle public-web-app {
     }
 
     rectangle ads-service {
