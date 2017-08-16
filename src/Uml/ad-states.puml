@@ -1,0 +1,24 @@
+@startuml
+
+title Ad Lifecycle state machine
+
+state toValidate <<choice>>
+state toApprove <<choice>>
+
+[*] --> toValidate
+toValidate --> rejected
+rejected --> [*]
+toValidate -> created
+
+created -> toApprove
+toApprove -> approved
+approved -> published
+
+toApprove --> notApproved
+notApproved --> closed
+closed --> [*]
+
+published --> sold
+sold --> closed
+
+@enduml
