@@ -1,0 +1,40 @@
+@startuml
+
+rectangle External {
+    rectangle GoogleMapsAPI
+}
+rectangle Public {
+    (Web-Based-Application) -> (RestFul-API)
+    (Web-Based-Application) -> (GoogleMapsAPI)
+    (RestFul-API) -down-> (Item-RestFul-API)
+    (RestFul-API) -down-> (User-RestFul-API)
+	rectangle Web-Based-Application {
+	}
+	rectangle RestFul-API {
+	}
+}
+
+
+rectangle Private {
+    (Moderator-Web-Application) -left-> (Item-RestFul-API)
+    (Moderator-Web-Application) -left-> (User-RestFul-API)
+    database UserDataBase
+    database ItemDataBase
+
+    (User-RestFul-API) -down-> (UserDataBase)
+    (Item-RestFul-API) -down-> (ItemDataBase)
+
+	rectangle Moderator-Web-Application {
+	}
+	rectangle Item-RestFul-API {
+
+	}
+
+
+	rectangle User-RestFul-API {
+    }
+
+
+
+}
+@enduml

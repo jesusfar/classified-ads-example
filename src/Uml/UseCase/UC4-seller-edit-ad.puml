@@ -1,8 +1,8 @@
 @startuml
 top to bottom direction
 usecase UC4 as "
-    As a Seller User, I can edit an Ad.
+    As a Seller User, I can edit an Item.
 "
 actor Seller
-Seller --> (Edit Ad)
+Seller --> (Edit Item)
 @enduml

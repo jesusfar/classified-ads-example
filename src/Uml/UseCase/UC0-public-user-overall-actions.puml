@@ -1,0 +1,12 @@
+@startuml
+
+
+User -left-> (SignUp)
+User -right-> (Login)
+User -up-> (PostItem)
+User -up-> (EditItem)
+User -up-> (CloseItem)
+User --> (ViewItem)
+User --> (ListItems)
+User --> (SearchItems)
+@enduml

@@ -17,8 +17,8 @@ moderator -- (moderator-app)
 rectangle system {
     (public-web-app) -down-> (public-api)
     (public-api) -down-> (user-service)
-    (public-api) -down-> (ads-service)
-    (moderator-app) -down-> (ads-service)
+    (public-api) -down-> (item-service)
+    (moderator-app) -down-> (item-service)
     
     rectangle public-api {
     
@@ -27,7 +27,7 @@ rectangle system {
     rectangle public-web-app {
     }
 
-    rectangle ads-service {
+    rectangle item-service {
     }
 
     rectangle moderator-app {

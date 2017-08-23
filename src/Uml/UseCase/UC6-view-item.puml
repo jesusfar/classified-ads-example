@@ -1,0 +1,8 @@
+@startuml
+top to bottom direction
+usecase UC6 as "
+    As a User, I can view and Item.
+"
+actor User
+User --> (View Item)
+@enduml
