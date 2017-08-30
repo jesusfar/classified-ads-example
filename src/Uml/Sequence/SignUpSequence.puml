@@ -1,0 +1,23 @@
+@startuml
+title Sign Up User Sequence
+
+autonumber
+
+actor User
+participant WebApp
+participant PublicApi
+participant UserServiceApi
+database UserDatabase
+
+User -> WebApp : SignUp action
+WebApp -> WebApp : Validate data
+WebApp -> PublicApi : Send sign-up request
+PublicApi -> UserServiceApi : Send request User Service
+UserServiceApi -> UserServiceApi : Validates data
+UserServiceApi -> UserDatabase : Persist data
+UserDatabase --> UserServiceApi : OK
+UserServiceApi --> PublicApi : Response
+PublicApi --> WebApp : Return response
+WebApp --> User : Show result notification
+
+@enduml
