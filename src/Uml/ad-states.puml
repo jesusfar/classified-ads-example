@@ -1,24 +1,24 @@
 @startuml
 
-title Ad Lifecycle state machine
+title Item Lifecycle
 
 state toValidate <<choice>>
 state toApprove <<choice>>
 
-[*] --> toValidate
-toValidate --> rejected
+[*] --> toValidate : is a valid Item?
+toValidate --> rejected : Item is invalid
 rejected --> [*]
-toValidate -> created
+toValidate -> created : Item is valid
 
-created -> toApprove
-toApprove -> approved
-approved -> published
+created -> toApprove : is a good Item?
+toApprove -> approved : Item approved
+approved -> published : Item published
 
-toApprove --> notApproved
-notApproved --> closed
+toApprove --> notApproved : Item not approved
+notApproved --> closed : Item closed
 closed --> [*]
 
-published --> sold
-sold --> closed
+published --> sold : Item sold
+sold --> closed : Item closed
 
 @enduml
