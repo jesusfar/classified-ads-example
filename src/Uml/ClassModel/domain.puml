@@ -1,0 +1,60 @@
+@startuml
+
+object Account {
+    -id
+    -username
+    -password
+    -status
+    -dateCreation
+}
+
+object Session {
+    -id
+    -dateCreation
+    -dateExpiration
+    -token
+}
+
+object User {
+    #id
+    #name
+    #lastName
+    #dateBirth
+    #email
+}
+
+object Seller
+object Buyer
+
+object Item {
+    -id
+    -title
+    -description
+    -price
+    -status
+}
+
+object Category {
+    -id
+    -name
+    -parentId
+}
+
+object Image {
+    -id
+    -src
+}
+
+User <|-- Seller
+User <|-- Buyer
+
+Account "1" -- "1" User
+Account "1" -- "1..n" Session
+
+Item "1" o-- "1..n" Image
+Item "1..n" -- "1" Category
+
+Seller "1" -- "1..n" Item : publishes
+Buyer "1" -- "0..n" Item : buys
+
+@enduml
