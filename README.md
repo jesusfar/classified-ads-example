@@ -12,7 +12,7 @@ You can find the documentation about domain model, sequences diagrams and perspe
 ```
 $ git clone https://github.com/jesusfar/classified-ads-example.git
 ```
-### Requiriments
+### Software requirements
 In order to run the application you need the following software dependencies.
   - Java 1.8
   - Gradle 3.5
@@ -36,5 +36,5 @@ $ ./gradlew run
 ```
 $ ./gradlew test
 ```
-Open in your browser Test report from classified-ads-example/build/reports/tests/test/packages/classifiedads.html
+Open the Test report from classified-ads-example/build/reports/tests/test/packages/classifiedads.html in your browser.
 
