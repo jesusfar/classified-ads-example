@@ -24,7 +24,12 @@ $ ./gradlew build
 ```
 ### Run App
 ```
-java -jar build/libs/classified-ads-example.jar
+$ java -jar build/libs/classified-ads-example.jar
+```
+or run with gradle
+
+```
+$ ./gradlew run
 ```
 
 ### Run test
