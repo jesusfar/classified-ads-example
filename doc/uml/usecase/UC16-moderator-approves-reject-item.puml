@@ -1,0 +1,10 @@
+@startuml
+top to bottom direction
+usecase UC9 as "
+    As Moderator, I can approves
+    or reject an Item
+"
+actor Moderator
+Moderator --> (Item approves)
+Moderator --> (Item rejects)
+@enduml

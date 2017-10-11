@@ -1,0 +1,29 @@
+@startuml
+title Seller edit item
+
+autonumber
+
+actor SellerUser
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+SellerUser -> WebApp : Clicks on "Edit Item"
+WebApp --> SellerUser: Renders a Item form with data
+
+SellerUser -> WebApp: Changes data on fields
+WebApp --> SellerUser: Renders a Save button
+
+SellerUser -> WebApp: Click on Save button
+WebApp -> PublicApi: Request Put to update Item
+PublicApi -> ItemServiceApi: Send the request
+ItemServiceApi -> ItemServiceApi: Validates the request
+ItemServiceApi -> Database : Update & Persists the item
+Database --> ItemServiceApi: OK
+ItemServiceApi --> PublicApi: Returns 200 OK response
+PublicApi -> WebApp:  Returns 200 OK response
+WebApp -> WebApp: Handles the response
+WebApp --> SellerUser: Renders a confirmation message.
+
+@enduml

@@ -1,0 +1,28 @@
+@startuml
+title Moderator approves or rejects Item
+
+autonumber
+
+actor ModeratorUser
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+ModeratorUser -> WebApp : Clicks on Item Lists to approve
+WebApp --> ModeratorUser: Renders a list with items to approve
+ModeratorUser -> WebApp: Clicks on one item to approve
+WebApp --> ModeratorUser: Renders a view Item
+ModeratorUser -> WebApp: Clicks on Approve or Reject button.
+WebApp -> PublicApi: Prepare & send request
+PublicApi -> ItemServiceApi: Send the request
+ItemServiceApi -> ItemServiceApi: Validates the request
+ItemServiceApi -> ItemServiceApi: Changes item state to approve or reject
+ItemServiceApi -> Database : Persists the item update
+Database --> ItemServiceApi: OK
+ItemServiceApi --> PublicApi: Returns 200 OK response
+PublicApi -> WebApp:  Returns 200 OK response
+WebApp -> WebApp: Handles the response
+WebApp --> ModeratorUser: Renders a confirmation message.
+
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+title View item
+
+autonumber
+
+actor User
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+User -> WebApp : Clicks on "List Items button"
+WebApp -> PublicApi: Send request to Get Items
+PublicApi -> ItemServiceApi: Send request
+ItemServiceApi -> ItemServiceApi: Validate request
+ItemServiceApi -> Database: Query items
+Database --> ItemServiceApi: Return rows
+ItemServiceApi --> PublicApi: Returns a collection of items
+PublicApi --> WebApp: Returns a collection of items
+WebApp -> WebApp: Handles the response
+WebApp -> User: Renders a list with collection items
+
+User -> WebApp : Clicks on one item
+WebApp -> PublicApi: Send request to Get Item by ID
+PublicApi -> ItemServiceApi: Send request
+ItemServiceApi -> ItemServiceApi: Validate request
+ItemServiceApi -> Database: Query item by ID
+Database --> ItemServiceApi: Returns a row item
+ItemServiceApi --> PublicApi: Returns an item
+PublicApi --> WebApp: Returns an item
+WebApp -> WebApp: Handles the response
+WebApp -> User: Renders a View Item
+
+@enduml

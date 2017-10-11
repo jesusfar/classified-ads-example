@@ -1,0 +1,23 @@
+@startuml
+title  Search items
+
+autonumber
+
+actor User
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+
+User -> WebApp : Writes a text in search & clicks on button
+WebApp -> PublicApi: Send request to search item by title
+PublicApi -> ItemServiceApi: Send request
+ItemServiceApi -> ItemServiceApi: Validate request
+ItemServiceApi -> Database: Query items by title
+Database --> ItemServiceApi: Returns items rows by criteria
+ItemServiceApi --> PublicApi: Returns a collection of items
+PublicApi --> WebApp: Returns a collection of items by criteria
+WebApp -> WebApp: Handles the response
+WebApp -> User: Renders a list with collection items
+@enduml

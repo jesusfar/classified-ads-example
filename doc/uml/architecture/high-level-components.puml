@@ -1,0 +1,21 @@
+@startuml
+title High-Level components
+
+node "public" {
+    component WebApp
+    component PublicApi
+}
+
+node "private" {
+    component UserService
+    component ItemService
+    component AdminApp
+}
+
+
+HTTP -> WebApp
+WebApp -> PublicApi
+PublicApi -down-> UserService
+PublicApi -down-> ItemService
+AdminApp -up-> ItemService
+@enduml

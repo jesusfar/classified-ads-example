@@ -1,0 +1,46 @@
+@startuml
+
+title Implementation components
+
+package "Application" {
+    package "User" {
+        component LoginService
+        component SignUpService
+    }
+
+    package "Item" {
+        component CreateItemService
+        component EditItemService
+        component CloseItemService
+        component ListItemService
+        component ViewItemService
+    }
+
+    package "Admin" {
+        component ApproveItemService
+        component RejectItemService
+    }
+
+}
+
+package "Domain" {
+    package "UserDomain" {
+    }
+
+    package "ItemDomain" {
+    }
+    package "AdminDomain" {
+    }
+}
+
+package "Infrastructure" {
+    package "Persistence" {
+        component UserRepository
+        component ItemRepositoty
+        component AdminRepository
+    }
+}
+
+Admin -down--> Domain
+Domain -down-> Infrastructure
+@enduml

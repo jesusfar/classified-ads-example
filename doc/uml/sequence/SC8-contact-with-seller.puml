@@ -1,0 +1,27 @@
+@startuml
+title  Buyer Contact with Seller
+
+autonumber
+
+actor SellerUser
+actor BuyerUser
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+BuyerUser -> WebApp : Clicks on "Contact button"
+WebApp --> BuyerUser: Renders a Contact form
+BuyerUser -> WebApp: Fills the data and submit the message
+WebApp -> PublicApi: Prepare and send request contact
+PublicApi -> ItemServiceApi: Send the request
+ItemServiceApi -> ItemServiceApi: Validate request
+ItemServiceApi -> ItemServiceApi: Emits Contact event
+ItemServiceApi -> Database: Persist the message
+ItemServiceApi --> PublicApi: Returns the response
+PublicApi --> WebApp: Returns the response
+WebApp --> BuyerUser: Renders a message confirmation.
+ItemServiceApi -> ItemServiceApi: (Async) Handles the Contact event
+ItemServiceApi --> SellerUser: (Async) Send an email notification
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+title Close Item
+
+autonumber
+
+actor SellerUser
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+SellerUser -> WebApp : Clicks on "Close Item"
+WebApp -> PublicApi: Request to close item
+PublicApi -> ItemServiceApi: Send the request
+ItemServiceApi -> ItemServiceApi: Validates the request
+ItemServiceApi -> ItemServiceApi: Changes item state=closed
+ItemServiceApi -> Database : Persists the item update
+Database --> ItemServiceApi: OK
+ItemServiceApi --> PublicApi: Returns 200 OK response
+PublicApi -> WebApp:  Returns 200 OK response
+WebApp -> WebApp: Handles the response
+WebApp --> SellerUser: Renders a confirmation message.
+
+@enduml

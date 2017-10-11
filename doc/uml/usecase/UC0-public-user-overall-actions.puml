@@ -1,0 +1,15 @@
+@startuml
+left to right direction
+actor User
+rectangle {
+ User -- (SignUp)
+ User -- (Login)
+ User -- (PostItem)
+ User -- (EditItem)
+ User -- (CloseItem)
+ User -- (ViewItem)
+ User -- (ListItems)
+ User -- (SearchItems)
+}
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+title Item Lifecycle
+
+state toValidate <<choice>>
+
+
+[*] --> created
+created --> toValidate: to validate
+toValidate -> rejected: Item rejected
+toValidate -left> approved: Item approved
+approved -down-> listed: Item to listing
+listed -down-> sold: Item is sold
+listed -down-> expired: Item expires
+sold -down-> closed: Item close
+closed --> [*]
+expired --> closed
+rejected --> expired
+@enduml

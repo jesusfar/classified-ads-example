@@ -1,0 +1,96 @@
+@startuml
+
+title Basic Domain Model
+
+class Account {
+    -id: AccountId
+    -username: String
+    -password: String
+    -status: AccountStatus
+    -creationDate: Date
+}
+
+class Session {
+    -id: SessionId
+    -creationDate: Date
+    -expirationDate: Date
+    -token: String
+}
+
+class User {
+    #id: UserId
+    #name: String
+    #lastName: String
+    #dateBirth: Date
+    #email: String
+}
+
+class Seller {
+    postItem()
+}
+
+class Buyer {
+    buysItem()
+}
+
+class Item {
+    -id: ItemId
+    -title: String
+    -description: String
+    -price: Price
+    -status: ItemStatus
+}
+
+class Category {
+    -id: CategoryId
+    -name: String
+    -parentId: CategoryId
+}
+
+class Image {
+    -id: String
+    -href: String
+}
+
+class Market {
+
+}
+
+enum ItemStatus {
+    CREATED,
+    APPROVED,
+    REJECTED,
+    LISTED,
+    SOLD,
+    EXPIRED,
+    CLOSED
+}
+
+enum AccountStatus {
+    ENABLED,
+    DISABLED
+}
+
+class Price {
+    - currency: String
+    - amount: Double
+}
+
+User <|-- Seller
+User <|-- Buyer
+
+User "1" -right- "1" Account: has >
+Account "1" -- "0..*" Session
+Account -- AccountStatus: <<use>>
+
+
+Item "1" o-left- "1..*" Image
+Item "1..*" o-right- "1" Category
+Item "1..*" o-- "1" Price
+Item -- ItemStatus: <<use>>
+
+Seller "1..*" --> "1" Market : post items >
+Buyer "1..*" --> "1" Market : buys items >
+Market "1" *-- "0--*" Item
+
+@enduml

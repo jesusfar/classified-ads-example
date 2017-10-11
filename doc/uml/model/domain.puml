@@ -1,0 +1,26 @@
+@startuml
+
+title Domain objects
+
+object Account
+object Session
+object User
+object Seller
+object Buyer
+object Item
+object Category
+object Image
+
+User <|-- Seller
+User <|-- Buyer
+
+Account "1" -right- "1" User
+Account "1" -left- "1..*" Session
+
+Item "1" o-left- "1..*" Image
+Item "1..*" o-right- "1" Category
+
+Seller "1" --- "1..*" Item : sells >
+Buyer "1" --- "0..*" Item : buys >
+
+@enduml

@@ -1,0 +1,17 @@
+@startuml
+title Deploy API services
+node ApiLoadBalancer
+node PublicApi1
+node PublicApi2
+node PublicApi3
+
+ApiLoadBalancer -- PublicApi1
+ApiLoadBalancer -- PublicApi2
+ApiLoadBalancer -- PublicApi3
+
+database Database
+
+PublicApi1 .. Database
+PublicApi2 .. Database
+PublicApi3 .. Database
+@enduml

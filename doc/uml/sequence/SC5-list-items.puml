@@ -1,0 +1,22 @@
+@startuml
+title  List items
+
+autonumber
+
+actor User
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+User -> WebApp : Clicks on "List Items button"
+WebApp -> PublicApi: Send request to Get Items
+PublicApi -> ItemServiceApi: Send request
+ItemServiceApi -> ItemServiceApi: Validate request
+ItemServiceApi -> Database: Query items
+Database --> ItemServiceApi: Return rows
+ItemServiceApi --> PublicApi: Returns a collection of items
+PublicApi --> WebApp: Returns a collection of items
+WebApp -> WebApp: Handles the response
+WebApp -> User: Renders a list with collection items
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+title Seller post item
+
+autonumber
+
+actor SellerUser
+participant WebApp
+participant PublicApi
+participant ItemServiceApi
+database Database
+
+SellerUser -> WebApp : Clicks on "Sell Item"
+WebApp --> SellerUser: Renders a Item form
+
+SellerUser -> WebApp: Fills Item Form
+WebApp --> SellerUser: Renders a Post button
+
+SellerUser -> WebApp: Post a the Item
+WebApp -> PublicApi: Request Post Item
+PublicApi -> ItemServiceApi: Send the request
+ItemServiceApi -> ItemServiceApi: Validates the request
+ItemServiceApi -> Database : Persists the item
+Database --> ItemServiceApi: OK
+ItemServiceApi --> PublicApi: Returns 200 OK response
+PublicApi -> WebApp:  Returns 200 OK response
+WebApp -> WebApp: Handles the response
+WebApp --> SellerUser: Renders a confirmation message.
+
+@enduml

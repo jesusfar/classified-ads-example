@@ -1,0 +1,12 @@
+@startuml
+title Deploy WebApp
+node WebAppLoadBalancer
+node WebApp1
+node WebApp2
+node WebApp3
+
+WebAppLoadBalancer -- WebApp1
+WebAppLoadBalancer -- WebApp2
+WebAppLoadBalancer -- WebApp3
+
+@enduml
